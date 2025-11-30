@@ -1,25 +1,41 @@
 import { provideZonelessChangeDetection } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import {fireEvent, render, screen} from '@testing-library/angular';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-      providers: [provideZonelessChangeDetection()]
-    }).compileComponents();
+
+  const renderComponent = () => render(App, {
+    providers: [provideZonelessChangeDetection()]
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(async () => {
+    await renderComponent();
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, custom-tooltip-using-angular-cdk');
+    expect(screen.getByText('Basic custom tooltip example using angular cdk')).toBeTruthy();
+  });
+
+  [
+    ['Github', 'Go to Github repository'],
+    ['Home', 'Go to Home page'],
+    ['Exit', 'Exit from the site']
+  ]
+    .forEach(([label, tooltipText]) => {
+      it(`should display tooltip for button with ${label} icon`, async () => {
+        const button = screen.getByLabelText(label);
+        fireEvent.mouseEnter(button);
+
+        const tooltip = screen.queryByLabelText('tooltip');
+        expect(tooltip!.textContent).toContain(tooltipText);
+      })
+    });
+
+  it('should not display tooltip when hovering over the disable button', async () => {
+    const button = screen.getByLabelText('Fire');
+    fireEvent.mouseEnter(button);
+
+    const tooltip = screen.queryByLabelText('tooltip');
+    expect(tooltip).toBeFalsy();
   });
 });
