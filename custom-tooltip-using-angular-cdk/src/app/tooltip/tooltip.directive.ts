@@ -33,7 +33,8 @@ export class TooltipDirective {
           originX: 'center',
           originY: 'bottom',
           overlayX: 'center',
-          overlayY: 'top'
+          overlayY: 'top',
+          offsetY: 10
         }])
     });
 
