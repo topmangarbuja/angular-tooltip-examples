@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, inject, input} from '@angular/core';
+import {Directive, ElementRef, HostListener, inject, input, OnDestroy} from '@angular/core';
 import {Overlay, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {TooltipComponent} from './tooltip.component';
@@ -6,7 +6,7 @@ import {TooltipComponent} from './tooltip.component';
 @Directive({
   selector: '[appTooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
   appTooltip = input('');
   private overlayRef?: OverlayRef;
   private element = inject(ElementRef);
@@ -46,8 +46,13 @@ export class TooltipDirective {
     tooltipRef.instance.tooltip = this.appTooltip();
   }
 
+  // Detach the overlay when the mouse leaves the host element
   @HostListener('mouseleave') onMouseLeave() {
-    // Dispose the overlay when mouse leaves the host element
+    this.overlayRef?.detach();
+  }
+
+  // Clean up the overlay when the directive is destroyed
+  ngOnDestroy() {
     this.overlayRef?.dispose();
   }
 }
