@@ -4,6 +4,11 @@ on:
   push:
     branches: [ "main" ]
 
+env:
+  # using custom base href for GitHub Pages deployment
+  # because the repo is hosted under a subpath e.g. https://username.github.io/angular-tooltip-examples/
+  BASE_HREF: "/angular-tooltip-examples/"
+
 jobs:
   build:
     name: Build and Test
@@ -31,7 +36,7 @@ jobs:
         run: pnpm install
 
       - name: Build the project
-        run: pnpm run build
+        run: pnpm run build --base-href=${{ env.BASE_HREF }}
 
       - name: Test the project
         run: pnpm test
