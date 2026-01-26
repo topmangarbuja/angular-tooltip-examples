@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./custom-tooltip-using-angular-cdk
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
