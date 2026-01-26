@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     defaults:
@@ -38,9 +39,10 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4.0.0
         with:
-          path: ./dist/custom-tooltip-using-angular-cdk/browser
+          path: ./custom-tooltip-using-angular-cdk/dist/custom-tooltip-using-angular-cdk/browser
 
   deploy:
+    name: Deploy to Github Pages
     needs: build
     runs-on: ubuntu-latest
     environment:
