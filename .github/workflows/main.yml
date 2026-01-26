@@ -4,6 +4,11 @@ on:
   push:
     branches: [ "main" ]
 
+# setting permissions for GitHub Pages deployment
+permissions:
+  id-token: write   # allow generating OpenID Connect OIDC tokens for authentication with GitHub Pages
+  pages: write      # allow publishing to GitHub Pages
+
 env:
   # using custom base href for GitHub Pages deployment
   # because the repo is hosted under a subpath e.g. https://username.github.io/angular-tooltip-examples/
