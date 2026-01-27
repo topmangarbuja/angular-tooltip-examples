@@ -15,6 +15,8 @@ The example leverages the CDK’s low-level overlay primitives to create a light
 ## 📸 Demo
 ![Demo of custom tooltip on hover](/custom-tooltip-using-angular-cdk/public/demo.gif)
 
+- You can also view the working example in the live demo: [Live Tooltip Demo](https://topmangarbuja.github.io/angular-tooltip-examples/).
+
 ## 🚀 Getting Started
 
 Check out the README file in the `custom-tooltip-using-angular-cdk` folder for detailed instructions on how to set up and run the project locally.
