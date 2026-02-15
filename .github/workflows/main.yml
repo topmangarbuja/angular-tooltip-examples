@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "custom-tooltip-using-angular-cdk/**"
+      - ".github/workflows/main.yml"
+      - "!**/*.md"
+      - "!**/*.gitignore"
 
 # setting permissions for GitHub Pages deployment
 permissions:
