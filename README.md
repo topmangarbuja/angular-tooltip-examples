@@ -4,6 +4,11 @@ This repository demonstrates a **simple Angular implementation of tooltips using
 
 The example leverages the CDK’s low-level overlay primitives to create a lightweight, customizable tooltip solution.
 
+## 📸 Demo
+![Demo of custom tooltip on hover](/custom-tooltip-using-angular-cdk/public/demo.gif)
+
+- You can also view the working example in the live demo: [Live Tooltip Demo](https://topmangarbuja.github.io/angular-tooltip-examples/).
+
 ## ✨ Features
 - Uses **Angular CDK Overlay** for positioning and rendering
 - Easily extendable for custom styling and behavior
@@ -11,11 +16,6 @@ The example leverages the CDK’s low-level overlay primitives to create a light
 - Doesn't display tooltips by default; they appear on hover
 - Doesn't display tooltip when there is empty tooltip text or when the element is disabled
 - Tests written with Jasmine (testing framework), Karma (test runner) and Testing Library (user-centric UI testing utilities)
-
-## 📸 Demo
-![Demo of custom tooltip on hover](/custom-tooltip-using-angular-cdk/public/demo.gif)
-
-- You can also view the working example in the live demo: [Live Tooltip Demo](https://topmangarbuja.github.io/angular-tooltip-examples/).
 
 ## 🚀 Getting Started
 
